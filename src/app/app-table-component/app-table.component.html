@@ -1,0 +1,19 @@
+<table class="table is-bordered">
+	<thead>
+		<ng-content select=".table-header">
+		</ng-content>
+	</thead>
+	<tbody>
+		<tr *ngFor="let row of rows">
+			<td *ngFor="let col of cols">
+				<ng-container *ngIf="getChildContainerByName(col) as container;"
+					[ngTemplateOutletContext]="{ $implicit: row }" [ngTemplateOutlet]="container.templateRef">
+				</ng-container>
+			</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<ng-content select=".table-footer">
+		</ng-content>
+	</tfoot>
+</table>
