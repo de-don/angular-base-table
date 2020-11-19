@@ -4,16 +4,16 @@ import {
   ContentChildren,
   QueryList,
   ChangeDetectionStrategy
-} from "@angular/core";
-import { ChildContainerDirective } from "../child-container.directive";
+} from '@angular/core';
+import { ChildContainerDirective } from '../directives/child-container.directive';
 
 @Component({
-  selector: "app-table",
-  templateUrl: "./app-table.component.html",
-  styleUrls: ["./app-table.component.css"],
+  selector: 'app-simple-table',
+  templateUrl: './app-simple-table.component.html',
+  styleUrls: ['./app-simple-table.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppTableComponent {
+export class AppSimpleTableComponent {
   @Input()
   rows: any[];
 
