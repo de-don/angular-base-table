@@ -1,4 +1,4 @@
-import {Component, ContentChildren, QueryList} from '@angular/core';
+import {Component, ContentChildren, Input, QueryList} from '@angular/core';
 import {ComplexTableRowComponent} from '../complex-table-row/complex-table-row.component';
 
 @Component({
@@ -7,6 +7,9 @@ import {ComplexTableRowComponent} from '../complex-table-row/complex-table-row.c
   styleUrls: ['./complex-table.component.css']
 })
 export class ComplexTableComponent {
+  @Input()
+  public showRowNumbers = false;
+
   @ContentChildren(ComplexTableRowComponent)
   public rows: QueryList<ComplexTableRowComponent>;
 }

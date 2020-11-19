@@ -1,6 +1,9 @@
 <table class="table is-bordered">
   <tbody>
-  <tr *ngFor="let row of rows">
+  <tr *ngFor="let row of rows; let index=index">
+    <td *ngIf="showRowNumbers">
+      #{{index+1}}
+    </td>
     <td *ngFor="let cell of row.cells">
       <ng-container [ngTemplateOutlet]="cell.templateRef">
       </ng-container>

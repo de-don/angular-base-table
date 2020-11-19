@@ -1,16 +1,30 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app-root.component.html'
 })
 export class AppRootComponent {
-  rows = [
-    { id: 1, name: 'first', food: ['apple', 'orange'] },
-    { id: 2, name: 'second', food: [] },
-    { id: 3, name: 'third', food: ['apple'] },
-    { id: 4, name: 'fourth', food: ['banana'] }
+  public fruits = [
+    {name: 'first', food: ['apple', 'orange']},
+    {name: 'second', food: []},
+    {name: 'third', food: ['apple']},
+    {name: 'fourth', food: ['banana']}
   ];
 
-  cols = ['id', 'name', 'food'];
+  public mainCourse = [
+    {name: 'fifth', food: ['beef']},
+    {name: 'sixth', food: ['chicken']},
+    {name: 'seventh', food: []},
+    {name: 'eighth', food: ['cow', 'fish']}
+  ];
+
+  public cols = ['name', 'food'];
+
+  public showRowNumbers = false;
+
+  toggleNumbers(): void {
+    this.showRowNumbers = !this.showRowNumbers;
+  }
+
 }
