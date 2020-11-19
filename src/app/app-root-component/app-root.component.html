@@ -1,36 +1,79 @@
 <h1 class="title">Table example</h1>
 <div class="box">
-	<app-simple-table [rows]="rows" [cols]="cols">
-		<div class="block table-header">
-			Some header text
-		</div>
+  <app-simple-table [rows]="rows" [cols]="cols">
+    <div class="block table-header">
+      Some header text
+    </div>
 
-		<!-- ID -->
-		<ng-template appChildContainer="id" let-item>
-			<strong>#{{ item.id }}</strong>
-		</ng-template>
+    <!-- ID -->
+    <ng-template appChildContainer="id" let-item>
+      <strong>#{{ item.id }}</strong>
+    </ng-template>
 
-		<!-- NAME -->
-		<ng-template appChildContainer="name" let-item>
-			{{ item.name }}
-		</ng-template>
+    <!-- NAME -->
+    <ng-template appChildContainer="name" let-item>
+      {{ item.name }}
+    </ng-template>
 
-		<!-- FOOD -->
-		<ng-template appChildContainer="food" let-item>
-			<ng-container *ngIf="item.food.length; else noFood">
-				<div class="tags">
+    <!-- FOOD -->
+    <ng-template appChildContainer="food" let-item>
+      <ng-container *ngIf="item.food.length; else noFood">
+        <div class="tags">
 					<span *ngFor="let dish of item.food" class="tag is-success">
             {{dish}}
           </span>
-				</div>
-			</ng-container>
-			<ng-template #noFood>
-				No food :(
-			</ng-template>
-		</ng-template>
+        </div>
+      </ng-container>
+      <ng-template #noFood>
+        No food :(
+      </ng-template>
+    </ng-template>
 
-		<div class="block table-footer">
-			Some footer text
-		</div>
-	</app-simple-table>
+    <div class="block table-footer">
+      Some footer text
+    </div>
+  </app-simple-table>
+</div>
+
+
+<div class="box">
+
+  <app-complex-table>
+    <app-complex-table-row>
+      <app-complex-table-cell>
+        Header
+      </app-complex-table-cell>
+
+      <app-complex-table-cell>
+        Row
+      </app-complex-table-cell>
+
+      <app-complex-table-cell>
+        Example
+      </app-complex-table-cell>
+    </app-complex-table-row>
+
+    <app-complex-table-row *ngFor="let row of rows">
+      <app-complex-table-cell>
+        {{row.id}}
+      </app-complex-table-cell>
+
+      <app-complex-table-cell>
+        {{row.name}}
+      </app-complex-table-cell>
+
+      <app-complex-table-cell>
+        <ng-container *ngIf="row.food.length; else noFood">
+          <div class="tags">
+					<span *ngFor="let dish of row.food" class="tag is-success">
+            {{dish}}
+          </span>
+          </div>
+        </ng-container>
+        <ng-template #noFood>
+          No food :(
+        </ng-template>
+      </app-complex-table-cell>
+    </app-complex-table-row>
+  </app-complex-table>
 </div>

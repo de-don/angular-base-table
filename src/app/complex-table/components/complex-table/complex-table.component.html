@@ -1,0 +1,10 @@
+<table class="table is-bordered">
+  <tbody>
+  <tr *ngFor="let row of rows">
+    <td *ngFor="let cell of row.cells">
+      <ng-container [ngTemplateOutlet]="cell.templateRef">
+      </ng-container>
+    </td>
+  </tr>
+  </tbody>
+</table>
