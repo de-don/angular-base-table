@@ -1,14 +1,15 @@
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { FormsModule } from "@angular/forms";
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from "./app-component/app.component";
-import { AppTableComponent } from "./app-table-component/app-table.component";
-import { ChildContainerDirective } from "./child-container.directive";
+import {AppRootComponent} from './app-root-component/app-root.component';
+import {AppSimpleTableComponent} from './app-simple-table-component/app-simple-table.component';
+import {ChildContainerDirective} from './directives/child-container.directive';
+import {CoreModuleModule} from './core-module/core-module.module';
+import {ComplexTableModule} from './complex-table/complex-table.module';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule],
-  declarations: [AppComponent, AppTableComponent, ChildContainerDirective],
-  bootstrap: [AppComponent]
+  imports: [CoreModuleModule, ComplexTableModule],
+  declarations: [AppRootComponent, AppSimpleTableComponent, ChildContainerDirective],
+  bootstrap: [AppRootComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

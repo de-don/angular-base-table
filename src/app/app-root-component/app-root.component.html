@@ -1,0 +1,78 @@
+<h1 class="title">Table example</h1>
+<div class="box">
+  <h3 class="subtitle">Simple table, created via "slots"</h3>
+
+    <app-simple-table [rows]="fruits" [cols]="cols">
+      <!-- NAME -->
+      <ng-template appChildContainer="name" let-item>
+        {{ item.name }}
+      </ng-template>
+
+      <!-- FOOD -->
+      <ng-template appChildContainer="food" let-item>
+        <ng-container *ngIf="item.food.length; else noFood">
+          <div class="tags">
+					<span *ngFor="let dish of item.food" class="tag is-success">
+            {{dish}}
+          </span>
+          </div>
+        </ng-container>
+        <ng-template #noFood>
+          No food :(
+        </ng-template>
+      </ng-template>
+    </app-simple-table>
+</div>
+
+
+<div class="box">
+  <h3 class="subtitle">Complex table, created via nested components</h3>
+  <button
+    type="button"
+    class="button block"
+    (click)="toggleNumbers()">
+    Toggle row numbers
+  </button>
+
+  <app-complex-table
+    [showRowNumbers]="showRowNumbers"
+    class="block">
+    <app-complex-table-row *ngFor="let row of fruits">
+      <app-complex-table-cell>
+        {{row.name}}
+      </app-complex-table-cell>
+
+      <app-complex-table-cell>
+        <ng-container *ngIf="row.food.length; else noFood">
+          <div class="tags">
+					<span *ngFor="let dish of row.food" class="tag is-success">
+            {{dish}}
+          </span>
+          </div>
+        </ng-container>
+        <ng-template #noFood>
+          No food :(
+        </ng-template>
+      </app-complex-table-cell>
+    </app-complex-table-row>
+
+    <app-complex-table-row *ngFor="let row of mainCourse">
+      <app-complex-table-cell>
+        {{row.name}}
+      </app-complex-table-cell>
+
+      <app-complex-table-cell>
+        <ng-container *ngIf="row.food.length; else noFood">
+          <div class="tags">
+					<span *ngFor="let dish of row.food" class="tag is-danger">
+            {{dish}}
+          </span>
+          </div>
+        </ng-container>
+        <ng-template #noFood>
+          No food :(
+        </ng-template>
+      </app-complex-table-cell>
+    </app-complex-table-row>
+  </app-complex-table>
+</div>
